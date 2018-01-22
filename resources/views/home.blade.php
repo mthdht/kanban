@@ -1,23 +1,20 @@
 @extends('layouts.kanban.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+    <div class="sideBarButton w3-col m1">
+        <button class="w3-bar-item w3-button w3-hide-small w3-hover-none w3-hover-text-black" onclick="w3_open();"><i class="fa fa-bars"></i>
+            <br>M
+            <br>e
+            <br>n
+            <br>u
+            <br>
+        </button>
     </div>
-</div>
+
+    <div class="content">
+
+    </div>
+
+
+
 @endsection
