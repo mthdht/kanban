@@ -77,72 +77,19 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>titre</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architec</td>
-                    <td>12/12/1222</td>
+                @foreach($projects as $project)
+                    <tr>
+                    <td>{{ $project->id }}</td>
+                    <td>{{ $project->titre }}</td>
+                    <td>{{ $project->description }}</td>
+                    <td>{{ substr($project->dateLine, 0, 100) }}</td>
                     <td>
                         <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
                         <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
                         <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>titre</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architec</td>
-                    <td>12/12/1222</td>
-                    <td>
-                        <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
-                        <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
-                        <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>titre</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architec</td>
-                    <td>12/12/1222</td>
-                    <td>
-                        <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
-                        <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
-                        <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>titre</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architec</td>
-                    <td>12/12/1222</td>
-                    <td>
-                        <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
-                        <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
-                        <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>titre</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architec</td>
-                    <td>12/12/1222</td>
-                    <td>
-                        <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
-                        <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
-                        <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>titre</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architec</td>
-                    <td>12/12/1222</td>
-                    <td>
-                        <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
-                        <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
-                        <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
 
