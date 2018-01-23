@@ -81,7 +81,7 @@
     <!-- !PAGE CONTENT! -->
     <div id="main" class="w3-main w3-display-container" style="margin-left:300px;margin-top:43px;">
         <div class="sideBarButton w3-display-topleft">
-            <button class="w3-bar-item w3-button w3-hide-small w3-hover-none w3-hover-text-black" onclick="w3_open();"><i class="fa fa-bars"></i>
+            <button class="w3-bar-item w3-button w3-hide-small w3-hover-none w3-hover-text-black" onclick="w3_open();"><i class="fa fa-caret-left" id="sidebarButtonIcon"></i>
                 <br>M
                 <br>e
                 <br>n
@@ -107,16 +107,20 @@
         // Get the DIV with overlay effect
         var main = document.getElementById("main");
 
+        // Get the i element in sidebar button
+        var x = document.getElementById("sidebarButtonIcon");
         // Toggle between showing and hiding the sidebar, and add overlay effect
         function w3_open() {
             if (mySidebar.style.display === 'block') {
                 mySidebar.style.display = 'none';
                 overlayBg.style.display = "none";
                 main.style.marginLeft = '0px';
+                x.className = x.className.replace("left", "right");
             } else {
                 mySidebar.style.display = 'block';
                 overlayBg.style.display = "block";
                 main.style.marginLeft = '300px';
+                x.className = x.className.replace("right", "left");
             }
         }
 
