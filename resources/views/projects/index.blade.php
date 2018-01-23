@@ -66,7 +66,7 @@
             <h5><b><i class="fa fa-folder"></i> Tous les projets</b></h5>
         </header>
 
-        <table class="w3-table w3-stripped">
+        <table class="w3-table w3-striped w3-hoverable">
             <thead>
                 <tr>
                 <th>Id</th>
