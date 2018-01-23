@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
+        @media screen and (min-width: 600px) and (max-width: 1040px){ .content { margin-left: 30px} }
     </style>
 </head>
 <body>
@@ -77,8 +79,8 @@
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
-    <div id="main" class="w3-main" style="margin-left:300px;margin-top:43px;">
-        <div class="sideBarButton w3-col m1">
+    <div id="main" class="w3-main w3-display-container" style="margin-left:300px;margin-top:43px;">
+        <div class="sideBarButton w3-display-topleft">
             <button class="w3-bar-item w3-button w3-hide-small w3-hover-none w3-hover-text-black" onclick="w3_open();"><i class="fa fa-bars"></i>
                 <br>M
                 <br>e
@@ -88,7 +90,7 @@
             </button>
         </div>
 
-        <div class="content">
+        <div class="content w3-content">
         @yield('content')
         </div>
 
