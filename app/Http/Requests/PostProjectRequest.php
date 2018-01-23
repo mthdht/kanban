@@ -25,7 +25,7 @@ class PostProjectRequest extends FormRequest
     {
         return [
             'titre' =>'required|string',
-            'description' => 'required|text',
+            'description' => 'required|string',
             'dateline' => 'date|nullable',
         ];
     }
