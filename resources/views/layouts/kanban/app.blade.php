@@ -78,8 +78,19 @@
 
     <!-- !PAGE CONTENT! -->
     <div id="main" class="w3-main" style="margin-left:300px;margin-top:43px;">
+        <div class="sideBarButton w3-col m1">
+            <button class="w3-bar-item w3-button w3-hide-small w3-hover-none w3-hover-text-black" onclick="w3_open();"><i class="fa fa-bars"></i>
+                <br>M
+                <br>e
+                <br>n
+                <br>u
+                <br>
+            </button>
+        </div>
 
+        <div class="content">
         @yield('content')
+        </div>
 
     <!-- End page content -->
     </div>
@@ -111,6 +122,7 @@
         function w3_close() {
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
+            main.style.marginLeft = '0px';
         }
     </script>
 </body>
