@@ -81,8 +81,8 @@
                     <tr>
                     <td>{{ $project->id }}</td>
                     <td>{{ $project->titre }}</td>
-                    <td>{{ $project->description }}</td>
-                    <td>{{ substr($project->dateLine, 0, 100) }}</td>
+                    <td>{{ substr($project->description, 0, 50) }}...</td>
+                    <td>{{ $project->dateLine }}</td>
                     <td>
                         <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
                         <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
