@@ -110,8 +110,6 @@
                 <div class="tag"><i class="fa fa-tags"></i> js-php</div>
             </div>
         </div>
-
-
     </div>
 
     <div class="stat w3-row-padding">
