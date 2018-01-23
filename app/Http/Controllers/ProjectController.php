@@ -8,6 +8,16 @@ use App\Http\Requests\PostProjectRequest;
 class ProjectController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -35,7 +45,7 @@ class ProjectController extends Controller
      */
     public function store(PostProjectRequest $request)
     {
-        $project = Project::create($request->all());
+        $project = Project::create(array_merge($request->all(), ['user_id' => \Auth::id()]));
         return redirect()->route('projects.show', ['project' => $project]);
     }
 
