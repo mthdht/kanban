@@ -12,4 +12,24 @@ class Category extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Get the category's project.
+     *
+     * @return Task Collection
+     */
+    public function project()
+    {
+        return $this->belongTo('App\Project');
+    }
+
+    /**
+     * Get the category's tasks.
+     *
+     * @return Task Collection
+     */
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
 }
