@@ -33,13 +33,15 @@
                             <i class="fa fa-plus-square"></i><b> Ajouter une tache </b>
                         </header>
 
-                        <div class="form w3-container w3-padding w3-hide w3-dark-gray" id="addTask{{ $category->id }}">
+                        <form action="{{ route('tasks.store') }}" method="POST" class="form w3-container w3-padding w3-hide w3-dark-gray" id="addTask{{ $category->id }}">
+                            {{ csrf_field() }}
                             <input type="text" name="titre" value="" placeholder="Ex: faire ceci ou cela"
                                    class="w3-input w3-round w3-light-gray"/>
+                            <input type="hidden" value="{{ $category->id }}" name="category_id">
                             <button class="w3-button w3-green w3-margin-top" type="submit">
                                 Envoyer
                             </button>
-                        </div>
+                        </form>
 
                     </div>
                     @foreach($category->tasks as $task)

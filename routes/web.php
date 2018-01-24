@@ -17,5 +17,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resources([
     '/projects' => 'ProjectController',
-    'categories' => 'CategoryController'
+    '/categories' => 'CategoryController',
+    '/tasks' => 'TaskController',
 ]);
