@@ -1,0 +1,17 @@
+/* my custom css
+ * Author: mthdht
+ * licence: free to use
+ */
+body {
+    height: 100vh;
+}
+.category, .addCategory {
+    min-width: 300px;
+    max-width: 300px;
+    margin-right: 25px;
+}
+
+.tasks {
+    max-height: 73vh;
+    overflow-y: auto;
+}
