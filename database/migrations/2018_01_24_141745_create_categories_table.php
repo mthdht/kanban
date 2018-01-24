@@ -15,7 +15,16 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('titre');
+            $table->string('description');
+            $table->integer('categoryOrder')->unsigned();
+            $table->integer('project_id')->unsigned();
             $table->timestamps();
+
+            //forein key
+            $table->foreign('project_id')
+                ->references('id')->on('projects')
+                ->onDelete('cascade');
         });
     }
 
