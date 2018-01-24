@@ -80,7 +80,7 @@
 
         <table class="w3-table w3-striped w3-hoverable">
             <thead>
-                <tr>
+                <tr class="w3-blue-gray">
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Description</th>
