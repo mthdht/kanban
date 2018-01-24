@@ -10,15 +10,15 @@
     </div>
 
     <div class="board w3-margin" style="display: inline-flex;align-items: flex-start">
-        @foreach($project->categories()->orderBy('categoryOrder')->get() as $category)
+        @foreach($project->categories as $category)
             <div class="w3-border category">
-                <div class="titre w3-container w3-white w3-text-gray w3-bottombar w3-border-orange">
+                <div title="{{ $category->description }}" class="titre w3-container w3-white w3-text-gray w3-bottombar w3-border-orange">
                     <h5>
                         <b><i class="fa fa-arrows-h"></i> {{ $category->titre }}</b>
                         <span class="w3-dropdown-click w3-right w3-hover-none">
-                        <i class="fa fa-cog" onclick="toggle('category-1')"></i>
+                        <i class="fa fa-cog" onclick="toggle('category-{{ $category->id }}')"></i>
 
-                        <div id="category-1" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
+                        <div id="category-{{ $category->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
                             <a href="#" class="w3-bar-item w3-button">Link 1</a>
                             <a href="#" class="w3-bar-item w3-button">Link 2</a>
                             <a href="#" class="w3-bar-item w3-button">Link 3</a>
@@ -27,10 +27,10 @@
                     </h5>
                 </div>
                 <div class="tasks w3-container w3-blue-gray">
-                    <div class="addTask w3-card w3-white w3-margin-top w3-round">
+                    <div class="addTask w3-card w3-white w3-margin w3-round">
                         <header class="w3-container w3-border-bottom w3-padding w3-light-gray"
                                 onclick="toggle('addTask{{ $category->id }}')">
-                            <i class="fa fa-plus-square"></i><b> Ajouter un tache </b>
+                            <i class="fa fa-plus-square"></i><b> Ajouter une tache </b>
                         </header>
 
                         <div class="form w3-container w3-padding w3-hide w3-dark-gray" id="addTask{{ $category->id }}">
@@ -82,11 +82,20 @@
             </div>
 
             <div class="add w3-container w3-dark-gray w3-padding">
-                <input type="text" name="titre" value="" placeholder="Ex: To-Do"
-                       class="w3-input w3-round w3-light-gray"/>
-                <button class="w3-button w3-green w3-margin-top" type="submit">
-                    Envoyer
-                </button>
+                <form action="{{ route('categories.store') }}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="text" name="titre" value="" placeholder="Ex: To-Do"
+                           class="w3-input w3-round w3-light-gray"/>
+                    <input type="hidden" value="{{ $project->id }}" name="project_id">
+                    @if ($errors->has('titre'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('titre') }}</strong>
+                    </span>
+                    @endif
+                    <button class="w3-button w3-green w3-margin-top" type="submit">
+                        Envoyer
+                    </button>
+                </form>
             </div>
         </div>
 @endsection
