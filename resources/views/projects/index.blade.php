@@ -3,8 +3,18 @@
 @section('content')
     <div class="recent w3-margin-top w3-row-padding">
         <!-- Header -->
-        <header class="w3-container" style="padding-top:22px">
-            <h5><b><i class="fa fa-folder"></i> Projets récents</b></h5>
+        <header class="w3-container w3-margin-bottom" style="padding-top:22px">
+            <h5>
+                <b class="">
+                    <i class="fa fa-folder"></i>
+                    Projets récents
+                    <a href="{{ route('projects.create') }}" class="w3-button w3-green w3-right w3-hover-lime">
+                        Add
+                        <i class="fa fa-plus-square"></i>
+                    </a>
+                </b>
+
+            </h5>
         </header>
 
         <div class="w3-quarter">
@@ -63,7 +73,9 @@
     <div class="all w3-margin-top w3-row-padding">
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px">
-            <h5><b><i class="fa fa-folder"></i> Tous les projets</b></h5>
+            <h5>
+                <b><i class="fa fa-folder"></i> Tous les projets</b>
+            </h5>
         </header>
 
         <table class="w3-table w3-striped w3-hoverable">
@@ -84,12 +96,12 @@
                     <td>{{ substr($project->description, 0, 50) }}...</td>
                     <td>{{ $project->dateLine }}</td>
                     <td>
-                        <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
-                        <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
+                        <a href="{{ route('projects.show', $project) }}"><button class="w3-button w3-blue w3-hover-light-blue"><i class="fa fa-eye"></i></button></a>
+                        <a href="{{ route('projects.show', $project) }}"><button class="w3-button w3-orange w3-hover-amber"><i class="fa fa-pencil"></i></button></a>
                         <form action="{{ route('projects.destroy', ['project' => $project]) }}" method="post" style="display: inline-block">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
+                            <button class="w3-button w3-red w3-hover-pink"><i class="fa fa-trash"></i></button>
                         </form>
 
                     </td>
