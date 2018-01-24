@@ -35,6 +35,10 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::table('categories', function (Blueprint $table) {
+
+            $table->dropForeign(['project_id']);
+        });
         Schema::dropIfExists('categories');
     }
 }
