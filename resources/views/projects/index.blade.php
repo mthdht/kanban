@@ -86,7 +86,12 @@
                     <td>
                         <button class="w3-button w3-blue"><i class="fa fa-eye"></i></button>
                         <button class="w3-button w3-orange"><i class="fa fa-pencil"></i></button>
-                        <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
+                        <form action="{{ route('projects.destroy', ['project' => $project]) }}" method="post" style="display: inline-block">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button class="w3-button w3-red"><i class="fa fa-trash"></i></button>
+                        </form>
+
                     </td>
                 </tr>
                 @endforeach
