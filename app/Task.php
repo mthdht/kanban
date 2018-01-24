@@ -12,4 +12,14 @@ class Task extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Get the category's project.
+     *
+     * @return Task Collection
+     */
+    public function category()
+    {
+        return $this->belongTo('App\Category');
+    }
 }
