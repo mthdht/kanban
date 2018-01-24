@@ -11,7 +11,7 @@
 
     <div class="board w3-margin" style="display: inline-flex;align-items: flex-start">
         @foreach($project->categories as $category)
-            <div class="w3-border category">
+            <div class="w3-border category  w3-card">
                 <div title="{{ $category->description }}" class="titre w3-container w3-white w3-text-gray w3-bottombar w3-border-orange">
                     <h5>
                         <b><i class="fa fa-arrows-h"></i> {{ $category->titre }}</b>
@@ -78,7 +78,7 @@
             </div>
         @endforeach
 
-        <div class="w3-border addCategory ">
+        <div class="w3-border addCategory w3-card">
             <div class="w3-container w3-white w3-text-gray w3-bottombar w3-border-orange">
                 <h5><b><i class="fa fa-plus-square"></i> Nouvelle catégorie</b></h5>
             </div>
