@@ -13,15 +13,16 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-        @media screen and (min-width: 600px) and (max-width: 1040px){ .content { margin-left: 30px} }
+        @media screen and (min-width: 600px) { .content { margin-left: 30px;margin-right: 30px} }
     </style>
 </head>
-<body>
+<body style="overflow-x: auto;">
     <!-- Top container -->
     <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
@@ -45,7 +46,7 @@
     </div>
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-white w3-animate-left" style="z-index:3;width:300px;display:block;" id="mySidebar"><br>
+    <nav class="w3-sidebar w3-white w3-animate-left" style="z-index:3;width:300px;display:block;margin-top:43px;" id="mySidebar"><br>
         <div class="w3-container w3-row">
             <div class="w3-col s4">
                 <img src="https://www.w3schools.com/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
@@ -90,7 +91,7 @@
             </button>
         </div>
 
-        <div class="content w3-content">
+        <div class="content">
         @yield('content')
         </div>
 
@@ -129,6 +130,17 @@
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
             main.style.marginLeft = '0px';
+        }
+
+
+
+        function toggle(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
         }
     </script>
 </body>
