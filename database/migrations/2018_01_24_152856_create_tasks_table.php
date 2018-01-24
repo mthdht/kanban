@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->string('titre');
             $table->string('description')->nullable();
-            $table->date('dateLine');
+            $table->date('dateLine')->nullable();
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
