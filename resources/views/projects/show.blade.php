@@ -18,8 +18,12 @@
                         <i class="fa fa-cog" onclick="toggle('category-{{ $category->id }}')"></i>
 
                         <div id="category-{{ $category->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
-                            <button href="#" class="w3-bar-item w3-button"><b>Ajouter une tache</b></button>
-                            <button href="#" class="w3-bar-item w3-button"><b>Effacer category</b></button>
+                            <button class="w3-bar-item w3-button" onclick="toggle('addTask{{ $category->id }}');toggle('category-{{ $category->id }}')"><b>Ajouter une tache</b></button>
+                            <button class="w3-bar-item w3-button" onclick="document.getElementById('deleteCategory').submit()"><b>Effacer category</b></button>
+                            <form action="{{ route('categories.destroy', ['category' => $category]) }}" method="POST" id="deleteCategory">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                            </form>
                         </div>
                     </span>
                     </h5>
@@ -49,8 +53,12 @@
                                     <i class="fa fa-cog" onclick="toggle('task-{{ $task->id }}')"></i>
 
                                     <div id="task-{{ $task->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
-                                        <button href="#" class="w3-bar-item w3-button">Voir/edit tache</button>
-                                        <button href="#" class="w3-bar-item w3-button">Effacer tache</button>
+                                        <button class="w3-bar-item w3-button" onclick="modal({{ $task }}, '{{ $category->titre }}');toggle('task-{{ $task->id }}')">Voir/edit tache</button>
+                                        <button class="w3-bar-item w3-button"  onclick="document.getElementById('deleteTask').submit()">Effacer tache</button>
+                                        <form action="{{ route('tasks.destroy', ['task' => $task]) }}" method="POST" id="deleteTask">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                         </form>
                                     </div>
                                 </span>
                             </header>
@@ -59,7 +67,7 @@
                                 <button class="w3-button" onclick="modal({{ $task }}, '{{ $category->titre }}')">
                                     <i class="fa fa-tasks"></i> <span class="w3-margin-left"> plus</span>
                                 </button>
-                                <pre class="w3-text-blue-gray w3-white w3-border" onclick="modal({{ $task }}, '{{ $category->titre }}')">{{ substr($task->description, 0 , 40) }} ...</pre>
+                                <pre class="w3-tiny w3-text-blue-gray w3-white w3-border" onclick="modal({{ $task }}, '{{ $category->titre }}')">{{ substr($task->description, 0 , 40) }} ...</pre>
                             </div>
 
                             <div class="tags w3-container w3-border-top w3-padding">
