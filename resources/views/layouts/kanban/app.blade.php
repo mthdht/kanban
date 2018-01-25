@@ -152,7 +152,10 @@
             document.getElementById('descriptionInput').value = task.description;
             document.getElementById('descriptionForm').action = '/tasks/' + task.id;
             document.getElementById('category_idForm').action = '/tasks/' + task.id;
-            document.getElementById('titreForm').action = '/tasks/' + task.id
+            document.getElementById('titreForm').action = '/tasks/' + task.id;
+            document.getElementById('dateLineInput').value = task.hasOwnProperty('dateLine') ? task.dateLine : 'aucune';
+            document.getElementById('modalDateLine').innerHTML = task.hasOwnProperty('dateLine') ? task.dateLine : 'aucune';
+            document.getElementById('dateLineForm').action = '/tasks/' + task.id;
             document.getElementById('modal').style.display='block';
         }
     </script>

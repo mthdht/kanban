@@ -150,6 +150,20 @@
                         </div>
                     </div>
 
+                    <div class="w3-container w3-padding">
+                        Date line:
+                        <button class="w3-button" id="modalDateLine" onclick="toggle('dateLineInput');document.getElementById('modalDateLine').style.display = 'none';document.getElementById('dateLineInput').focus()">
+
+                        </button>
+                        <form action="" method="POST" id="dateLineForm">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
+                            <input type="date" name="dateLine" value="" class="w3-input w3-border" id="dateLineInput" style="display: none;"
+                                   onblur="document.getElementById('dateLineForm').submit()">
+                        </form>
+
+                    </div>
+
                     <div id="description w3-container" class="w3-col m9">
                         <header class="w3-padding w3-text-gray">
                             Description:
