@@ -59,7 +59,7 @@
                                 <button class="w3-button" onclick="modal({{ $task }}, '{{ $category->titre }}')">
                                     <i class="fa fa-tasks"></i> <span class="w3-margin-left"> plus</span>
                                 </button>
-                                <p class="w3-text-blue-gray">{{ substr($task->description, 0 , 80) }} ...</p>
+                                <pre class="w3-text-blue-gray w3-white w3-border" onclick="modal({{ $task }}, '{{ $category->titre }}')">{{ substr($task->description, 0 , 40) }} ...</pre>
                             </div>
 
                             <div class="tags w3-container w3-border-top w3-padding">
@@ -115,7 +115,7 @@
 
                     <div class="w3-container w3-padding">
                         Catégory:
-                        <button class="w3-button" onclick="toggle('modalCategoryChange')" id="modalCategory">
+                        <button class="w3-button w3-text-blue-gray" onclick="toggle('modalCategoryChange')" id="modalCategory">
 
                         </button>
 
@@ -142,26 +142,42 @@
                         </div>
                     </div>
 
-                    <div id="description w3-container" class="w3-col m8">
+                    <div id="description w3-container" class="w3-col m9">
                         <header class="w3-padding w3-text-gray">
-                            <b>Description:</b>
+                            Description:
                             <button class="w3-button" onclick="toggle('descriptionForm');toggle('modalDescription');document.getElementById('descriptionInput').focus()">Editer</button>
                         </header>
                         <div class="w3-container text">
-                            <div class=" w3-show" id="modalDescription" style="display: none;">
+                            <pre class="w3-white w3-border-0 w3-text-gray w3-show" id="modalDescription" style="display: none;" onclick="toggle('descriptionForm');toggle('modalDescription');document.getElementById('descriptionInput').focus()">
 
-                            </div>
+                            </pre>
                             <form action="" method="POST" id="descriptionForm" style="display: none;">
                                 {{ csrf_field() }}
                                 {{ method_field('PUT') }}
-                                <textarea type="text" name="description" value="" class="w3-input w3-border" id="descriptionInput" rows=""></textarea>
+                                <textarea type="text" name="description" value="" class="w3-input w3-border" id="descriptionInput" rows="6"></textarea>
                                 <button class="w3-button w3-green w3-margin" type="submit">Envoyer</button>
                             </form>
                         </div>
                     </div>
 
-                    <div class="setting w3-col m4">
-                        dsfdfdfvgfdvfd
+                    <div class="setting w3-col m3 w3-card w3-blue-gray w3-container w3-center">
+                        <header>
+                            <h5>Label</h5>
+                        </header>
+                        
+                        <div class="labels w3-margin-bottom">
+                            <button class="w3-button w3-amber"> js</button>
+                            <button class="w3-button w3-purple"> php</button>
+                        </div>
+                        <form action="" class="labels w3-margin-bottom">
+                            {{ method_field('PUT') }}
+                            {{ csrf_field() }}
+                            <input type="text" name="tagName" class="w3-input w3-border w3-margin-bottom">
+                            <button class="w3-button w3-green" type="submit">
+                                Ajouter
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>

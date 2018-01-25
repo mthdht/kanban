@@ -147,7 +147,7 @@
             console.log(task);
             document.getElementById('modalTitre').innerHTML = "<b>" + task.titre +"</b>";
             document.getElementById('titreInput').value = task.titre;
-            document.getElementById('modalCategory').innerHTML = category;
+            document.getElementById('modalCategory').innerHTML = "<b>" + category + "</b>";
             document.getElementById('modalDescription').innerHTML = task.description;
             document.getElementById('descriptionInput').value = task.description;
             document.getElementById('descriptionForm').action = '/tasks/' + task.id;
