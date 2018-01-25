@@ -142,6 +142,19 @@
                 x.className = x.className.replace(" w3-show", "");
             }
         }
+
+        function modal(task, category) {
+            console.log(task);
+            document.getElementById('modalTitre').innerHTML = "<b>" + task.titre +"</b>";
+            document.getElementById('titreInput').value = task.titre;
+            document.getElementById('modalCategory').innerHTML = category;
+            document.getElementById('modalDescription').innerHTML = task.description;
+            document.getElementById('descriptionInput').value = task.description;
+            document.getElementById('descriptionForm').action = '/tasks/' + task.id;
+            document.getElementById('category_idForm').action = '/tasks/' + task.id;
+            document.getElementById('titreForm').action = '/tasks/' + task.id
+            document.getElementById('modal').style.display='block';
+        }
     </script>
 </body>
 </html>
