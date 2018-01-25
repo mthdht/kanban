@@ -4,8 +4,7 @@
     <div class=" w3-row-padding">
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px">
-            <h5><b><i class="fa fa-folder"></i> {{ $project->titre }} <span
-                            class="w3-right"> Date-line: {{ $project->dateLine }}</span></b></h5>
+            <h5><b><i class="fa fa-folder"></i> {{ $project->titre }} <span class="w3-right"> Date-line: {{ $project->dateLine }}</span></b></h5>
         </header>
     </div>
 
@@ -19,9 +18,8 @@
                         <i class="fa fa-cog" onclick="toggle('category-{{ $category->id }}')"></i>
 
                         <div id="category-{{ $category->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
-                            <a href="#" class="w3-bar-item w3-button">Link 1</a>
-                            <a href="#" class="w3-bar-item w3-button">Link 2</a>
-                            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                            <button href="#" class="w3-bar-item w3-button"><b>Ajouter une tache</b></button>
+                            <button href="#" class="w3-bar-item w3-button"><b>Effacer category</b></button>
                         </div>
                     </span>
                     </h5>
@@ -42,7 +40,6 @@
                                 Envoyer
                             </button>
                         </form>
-
                     </div>
                     @foreach($category->tasks as $task)
                         <div class="task w3-card w3-white w3-margin-top w3-margin-bottom w3-round">
@@ -52,15 +49,14 @@
                                     <i class="fa fa-cog" onclick="toggle('task-{{ $task->id }}')"></i>
 
                                     <div id="task-{{ $task->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
-                                        <a href="#" class="w3-bar-item w3-button">Link 1</a>
-                                        <a href="#" class="w3-bar-item w3-button">Link 2</a>
-                                        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+                                        <button href="#" class="w3-bar-item w3-button">Voir/edit tache</button>
+                                        <button href="#" class="w3-bar-item w3-button">Effacer tache</button>
                                     </div>
                                 </span>
                             </header>
 
                             <div class="description w3-container ">
-                                <button class="w3-button">
+                                <button class="w3-button" onclick="modal({{ $task }}, '{{ $category->titre }}')">
                                     <i class="fa fa-tasks"></i> <span class="w3-margin-left"> plus</span>
                                 </button>
                                 <p class="w3-text-blue-gray">{{ substr($task->description, 0 , 80) }} ...</p>
@@ -73,7 +69,6 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         @endforeach
@@ -100,4 +95,76 @@
                 </form>
             </div>
         </div>
+
+        <!-- The Modal -->
+        <div id="modal" class="w3-modal ">
+            <div class="w3-modal-content w3-card">
+                <div class="w3-container w3-padding">
+                    <span onclick="document.getElementById('modal').style.display='none'" class="w3-button w3-display-topright w3-xlarge">&times;</span>
+                    <header class="w3-container w3-border-bottom w3-padding w3-text-gray">
+                        <h5 id="modalTitre" onclick="toggle('titreInput');document.getElementById('modalTitre').style.display = 'none';document.getElementById('titreInput').focus()">
+
+                        </h5>
+                        <form action="" method="POST" id="titreForm">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
+                            <input type="text" name="titre" value="" class="w3-input w3-border" id="titreInput" style="display: none;"
+                                   onblur="document.getElementById('titreForm').submit()">
+                        </form>
+                     </header>
+
+                    <div class="w3-container w3-padding">
+                        Catégory:
+                        <button class="w3-button" onclick="toggle('modalCategoryChange')" id="modalCategory">
+
+                        </button>
+
+                        <div id="modalCategoryChange" class="w3-dropdown-content w3-bar-block w3-border w3-light-gray" style="width:290px;">
+                            <span onclick="toggle('modalCategoryChange')" class="w3-button w3-display-topright w3-blue-gray">&times;</span>
+                            <header class="w3-container w3-border-bottom w3-padding w3-blue-gray">
+                                <h5> Changer de catégorie</h5>
+                            </header>
+                            <div class="w3-margin">
+                                <form action="" method="POST" id="category_idForm">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
+
+                                    <select class="w3-select w3-dark-gray w3-col m7 w3-margin-right" name="category_id">
+                                        <option value="" disabled selected>Choisir catégorie</option>
+                                        @foreach($project->categories as $category)
+                                            <option value="{{ $category->id }}" >{{ $category->titre }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <button type="submit" class="w3-button w3-green">Envoyer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="description w3-container" class="w3-col m8">
+                        <header class="w3-padding w3-text-gray">
+                            <b>Description:</b>
+                            <button class="w3-button" onclick="toggle('descriptionForm');toggle('modalDescription');document.getElementById('descriptionInput').focus()">Editer</button>
+                        </header>
+                        <div class="w3-container text">
+                            <div class=" w3-show" id="modalDescription" style="display: none;">
+
+                            </div>
+                            <form action="" method="POST" id="descriptionForm" style="display: none;">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                                <textarea type="text" name="description" value="" class="w3-input w3-border" id="descriptionInput" rows=""></textarea>
+                                <button class="w3-button w3-green w3-margin" type="submit">Envoyer</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="setting w3-col m4">
+                        dsfdfdfvgfdvfd
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
