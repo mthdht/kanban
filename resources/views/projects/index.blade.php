@@ -11,6 +11,7 @@
 
         </header>
 
+
         @foreach(\Auth::user()->projects()->orderBy('updated_at')->take(4)->get() as $project)
             <div class="w3-quarter">
                 <div class="w3-container w3-padding-16 w3-center w3-round w3-card">
@@ -19,11 +20,12 @@
                     </a>
                     <div class="w3-half"><i class="fa fa-file-code-o w3-xxlarge w3-margin"></i></div>
                     <div class="w3-half">
-                        <h3>{{ $project->tasks()->count() }}</h3>
+                        <h3>
+                            {{ $project->tasks()->count() }}
+                        </h3>
                         <p> Tickets</p>
                     </div>
                     <div class="w3-clear"></div>
-                    <div class="tag"><i class="fa fa-tags"></i> js-php</div>
                 </div>
             </div>
         @endforeach
