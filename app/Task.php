@@ -14,12 +14,22 @@ class Task extends Model
     protected $guarded = [];
 
     /**
-     * Get the category's project.
+     * Get the task's category.
      *
      * @return Task Collection
      */
     public function category()
     {
         return $this->belongTo('App\Category');
+    }
+
+    /**
+     * Get the task's tags.
+     *
+     * @return Task Collection
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
     }
 }
