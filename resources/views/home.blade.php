@@ -8,49 +8,65 @@
             <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
         </header>
 
-        <div class="w3-quarter">
-            <div class="w3-container w3-red w3-padding-16">
-                <div class="w3-left"><i class="fa fa-folder w3-xxxlarge"></i></div>
-                <div class="w3-right">
-                    <h3>{{ \Auth::user()->projects()->count() }}</h3>
-                </div>
-                <div class="w3-clear"></div>
-                <h4>Projets</h4>
-            </div>
-        </div>
+        @component('components.topCard')
+            @slot('icon')
+                folder
+            @endslot
+            @slot('title')
+                Projets
+            @endslot
+            @slot('count')
+                {{ \Auth::user()->projects()->count() }}
+            @endslot
+            @slot('color')
+                red
+            @endslot
+        @endcomponent
 
-        <div class="w3-quarter">
-            <div class="w3-container w3-green w3-padding-16">
-                <div class="w3-left"><i class="fa fa-file-code-o w3-xxxlarge"></i></div>
-                <div class="w3-right">
-                    <h3>{{ \Auth::user()->tasks()->count() }}</h3>
-                </div>
-                <div class="w3-clear"></div>
-                <h4>Tickets</h4>
-            </div>
-        </div>
+        @component('components.topCard')
+            @slot('icon')
+                code
+            @endslot
+            @slot('title')
+                Tasks
+            @endslot
+            @slot('count')
+                {{ \Auth::user()->tasks()->count() }}
+            @endslot
+            @slot('color')
+                green
+            @endslot
+        @endcomponent
 
-        <div class="w3-quarter">
-            <div class="w3-container w3-orange w3-text-white w3-padding-16">
-                <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-                <div class="w3-right">
-                    <h3>0</h3>
-                </div>
-                <div class="w3-clear"></div>
-                <h4>Messages</h4>
-            </div>
-        </div>
+        @component('components.topCard')
+            @slot('icon')
+                envelope
+            @endslot
+            @slot('title')
+                Messages
+            @endslot
+            @slot('count')
+                0
+            @endslot
+            @slot('color')
+                amber
+            @endslot
+        @endcomponent
 
-        <div class="w3-quarter">
-            <div class="w3-container w3-teal w3-padding-16">
-                <div class="w3-left"><i class="fa fa-cogs w3-xxxlarge"></i></div>
-                <div class="w3-right">
-                    <h3>0</h3>
-                </div>
-                <div class="w3-clear"></div>
-                <h4>options</h4>
-            </div>
-        </div>
+        @component('components.topCard')
+            @slot('icon')
+                cog
+            @endslot
+            @slot('title')
+                Settings
+            @endslot
+            @slot('count')
+                0
+            @endslot
+            @slot('color')
+                teal
+            @endslot
+        @endcomponent
     </div>
 
     <div class="recent w3-margin-top w3-row-padding">
