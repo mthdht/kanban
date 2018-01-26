@@ -23,7 +23,7 @@
     </div>
 
     <div class="tags w3-container w3-border-top w3-padding" >
-        <div id="tag" onclick="toggle('addTaskTag-{{ $task->id }}')">
+        <div id="tag" onclick="toggle('addTaskTag-{{ $task->id }}');document.getElementById('addTaskTagInput-{{ $task->id }}').focus()">
             <i class="fa fa-tags"></i>
             @foreach($task->tags as $tag)
                 <span class="w3-tag w3-orange">{{ $tag->titre }}</span>
@@ -32,7 +32,7 @@
         <form action="{{ route('tags.store') }}" method="POST" id="addTaskTag-{{ $task->id }}" style="display: none;">
             {{ csrf_field() }}
             <input type="hidden" name="task_id" value="{{ $task->id }}">
-            <input type="text" class="w3-input w3-border" placeholder="Ex: php" name="titre" value="" onblur="document.getElementById('addTaskTag-{{ $task->id }}').submit()">
+            <input type="text" id="addTaskTagInput-{{ $task->id }}" class="w3-input w3-border" placeholder="Ex: php" name="titre" value="" onblur="document.getElementById('addTaskTag-{{ $task->id }}').submit()">
         </form>
     </div>
 </div>
