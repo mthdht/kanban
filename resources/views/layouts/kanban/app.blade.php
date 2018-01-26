@@ -19,13 +19,6 @@
     <style>
         html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-        #mySidebar { display:none;}
-
-        @media screen and (min-width: 600px) {
-            .content { margin-left: 30px;margin-right: 30px}
-            body { overflow-y: hidden }
-            #mySidebar { display:block;}
-        }
     </style>
 </head>
 <body style="overflow-x: auto;">
