@@ -19,40 +19,42 @@
     <style>
         html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-        @media screen and (min-width: 600px) { .content { margin-left: 30px;margin-right: 30px} }
+        #mySidebar { display:none;}
+
+        @media screen and (min-width: 600px) {
+            .content { margin-left: 30px;margin-right: 30px}
+            body { overflow-y: hidden }
+            #mySidebar { display:block;}
+        }
     </style>
 </head>
 <body style="overflow-x: auto;">
     <!-- Top container -->
-    <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+    <div class="w3-bar w3-top w3-blue-gray w3-large" style="z-index:4">
         <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-            {{ Auth::user()->name }} <span class="caret"></span>
+        <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-hover-none">
+            <b>KanBan</b>
         </a>
+        <div class="w3-bar-item w3-right w3-hover-none w3-button">
+            <a class="w3-hover-text-black" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                <b>Logout</b>
+            </a>
 
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        </div>
 
-        <a href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-            Logout
-        </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
-
-        <span class="w3-bar-item w3-right">Logo</span>
     </div>
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-white w3-animate-left" style="z-index:3;width:300px;display:block;margin-top:43px;" id="mySidebar"><br>
+    <nav class="w3-sidebar w3-white w3-animate-left" style="z-index:3;width:300px;margin-top:43px;" id="mySidebar"><br>
         <div class="w3-container w3-row">
             <div class="w3-col s4">
                 <img src="https://www.w3schools.com/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
             </div>
             <div class="w3-col s8 w3-bar">
-                <span>Welcome, <strong>Mike</strong></span><br>
+                <span>Welcome, <strong>{{ \Auth::user()->name }}</strong></span><br>
                 <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
                 <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
                 <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
@@ -63,16 +65,12 @@
             <h5>Dashboard</h5>
         </div>
         <div class="w3-bar-block">
-            <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+            <a href="" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+            <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding w3-hover-blue {{ Route::current()->uri == '/' ? 'w3-blue' : '' }}"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
+            <a href="{{ route('projects.index') }}" class="w3-bar-item w3-button w3-padding w3-hover-red {{ stristr(Route::current()->uri, 'projects') != FALSE ? 'w3-amber' : '' }}"><i class="fa fa-folder fa-fw"></i>  Projets</a>
+            <a href="{{ route('tasks.index') }}" class="w3-bar-item w3-button w3-padding w3-hover-green {{ stristr(Route::current()->uri, 'tasks') != FALSE ? 'w3-green' : '' }}"><i class="fa fa-code fa-fw"></i>  Taches</a>
+            <a href="" class="w3-bar-item w3-button w3-padding w3-hover-orange"><i class="fa fa-envelope fa-fw"></i>  Notifications</a>
+            <a href="#" class="w3-bar-item w3-button w3-padding w3-hover-teal"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
         </div>
     </nav>
 
