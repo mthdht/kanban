@@ -80,7 +80,8 @@ class ProjectController extends Controller
      */
     public function update(PostProjectRequest $request, Project $project)
     {
-        //
+        $project->fill($request->all())->save();
+        return redirect()->back();
     }
 
     /**
