@@ -9,15 +9,27 @@
     </header>
 
     @foreach(\Auth::user()->tasks()->orderBy('updated_at')->take(4)->get() as $task)
-        <div class="w3-quarter">
-            <div class="w3-container w3-padding-16 w3-center w3-round w3-card">
-                <a href="{{ route('projects.show', ['project' => $task->category->project]) }}">
-                    <h3 class="w3-margin-bottom w3-hover-none"><b>{{ $task->titre }}</b></h3>
-                </a>
-                <div class="w3-half"><i class="fa fa-code-o w3-xxlarge w3-margin"></i></div>
+        <div class="w3-col m4 l3">
+            <div class="w3-container w3-padding w3-round w3-card" style="height: 150px;">
+
+                <div class="w3-display-container w3-padding-top" style="height: 100%;">
+                    <a href="{{ route('projects.show', ['project' => $task->category->project]) }}" class="w3-display-topmiddle w3-center">
+                        <h5 class="w3-hover-none w3-medium"><b>{{ $task->titre }}</b></h5>
+                    </a>
+                    <div class="w3-display-left"><i class="fa fa-code"></i></div>
+                    <div class=" w3-display-right w3-small" style="width: 80%">
+                        {{ substr($task->description, 0, 50) }} ...
+                    </div>
+                    <div class="tag w3-display-bottomleft">
+                        <i class="fa fa-tags"></i>
+                        @foreach($task->tags as $tag)
+                            <span class="w3-tag w3-orange">{{ $tag->titre }}</span>
+                        @endforeach
+                    </div>
+                </div>
 
                 <div class="w3-clear"></div>
-                <div class="tag"><i class="fa fa-tags"></i> js-php</div>
+
             </div>
         </div>
     @endforeach
