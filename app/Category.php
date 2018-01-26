@@ -20,7 +20,7 @@ class Category extends Model
      */
     public function project()
     {
-        return $this->belongTo('App\Project');
+        return $this->belongsTo('App\Project');
     }
 
     /**
