@@ -19,8 +19,8 @@
 
                         <div id="category-{{ $category->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
                             <button class="w3-bar-item w3-button" onclick="toggle('addTask{{ $category->id }}');toggle('category-{{ $category->id }}')"><b>Ajouter une tache</b></button>
-                            <button class="w3-bar-item w3-button" onclick="document.getElementById('deleteCategory').submit()"><b>Effacer category</b></button>
-                            <form action="{{ route('categories.destroy', ['category' => $category]) }}" method="POST" id="deleteCategory">
+                            <button class="w3-bar-item w3-button" onclick="document.getElementById('deleteCategory-{{ $category->id }}').submit()"><b>Effacer category</b></button>
+                            <form action="{{ route('categories.destroy', ['category' => $category]) }}" method="POST" id="deleteCategory-{{ $category->id }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                             </form>
