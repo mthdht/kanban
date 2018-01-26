@@ -56,7 +56,11 @@
     <div class="recent w3-margin-top w3-row-padding">
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px">
-            <h5><b><i class="fa fa-folder"></i> Projets récents</b></h5>
+            <h5><b><i class="fa fa-folder"></i> Projets récents</b><a href="{{ route('projects.create') }}" class="w3-button w3-green w3-right w3-hover-lime">
+                    Add
+                    <i class="fa fa-plus-square"></i>
+                </a></h5>
+
         </header>
 
         @foreach(\Auth::user()->projects()->orderBy('updated_at')->take(4)->get() as $project)
