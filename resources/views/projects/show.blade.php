@@ -54,8 +54,8 @@
 
                                     <div id="task-{{ $task->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
                                         <button class="w3-bar-item w3-button" onclick="modal({{ $task }}, '{{ $category->titre }}');toggle('task-{{ $task->id }}')">Voir/edit tache</button>
-                                        <button class="w3-bar-item w3-button"  onclick="document.getElementById('deleteTask').submit()">Effacer tache</button>
-                                        <form action="{{ route('tasks.destroy', ['task' => $task]) }}" method="POST" id="deleteTask">
+                                        <button class="w3-bar-item w3-button"  onclick="document.getElementById('deleteTask-{{ $task->id }}').submit()">Effacer tache</button>
+                                        <form action="{{ route('tasks.destroy', ['task' => $task]) }}" method="POST" id="deleteTask-{{ $task->id }}">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
                                          </form>

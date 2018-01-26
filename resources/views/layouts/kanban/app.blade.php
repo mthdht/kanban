@@ -69,9 +69,7 @@
             <a href="{{ route('home') }}" class="w3-bar-item w3-button w3-padding w3-hover-blue {{ Route::current()->uri == '/' ? 'w3-blue' : '' }}"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
             <a href="{{ route('projects.index') }}" class="w3-bar-item w3-button w3-padding w3-hover-red {{ stristr(Route::current()->uri, 'projects') != FALSE ? 'w3-amber' : '' }}"><i class="fa fa-folder fa-fw"></i>  Projets</a>
             <a href="{{ route('tasks.index') }}" class="w3-bar-item w3-button w3-padding w3-hover-green {{ stristr(Route::current()->uri, 'tasks') != FALSE ? 'w3-green' : '' }}"><i class="fa fa-code fa-fw"></i>  Taches</a>
-            <a href="" class="w3-bar-item w3-button w3-padding w3-hover-orange"><i class="fa fa-envelope fa-fw"></i>  Notifications</a>
-            <a href="#" class="w3-bar-item w3-button w3-padding w3-hover-teal"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
-        </div>
+         </div>
     </nav>
 
     <!-- Overlay effect when opening sidebar on small screens -->
