@@ -20,7 +20,7 @@ class Task extends Model
      */
     public function category()
     {
-        return $this->belongTo('App\Category');
+        return $this->belongsTo('App\Category');
     }
 
     /**
@@ -31,5 +31,15 @@ class Task extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Tag');
+    }
+
+    /**
+     * Get the task's project.
+     *
+     * @return project instance
+     */
+    public function project()
+    {
+        return $this->category()->belongsToMany('App\Project');
     }
 }
