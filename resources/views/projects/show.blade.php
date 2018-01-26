@@ -39,7 +39,6 @@
                         <b><i class="fa fa-arrows-h"></i> {{ $category->titre }}</b>
                         <span class="w3-dropdown-click w3-right w3-hover-none">
                         <i class="fa fa-cog" onclick="toggle('category-{{ $category->id }}')"></i>
-
                         <div id="category-{{ $category->id }}" class="w3-dropdown-content w3-bar-block w3-border" style="right: 0;">
                             <button class="w3-bar-item w3-button" onclick="toggle('addTask{{ $category->id }}');toggle('category-{{ $category->id }}')"><b>Ajouter une tache</b></button>
                             <button class="w3-bar-item w3-button" onclick="document.getElementById('deleteCategory-{{ $category->id }}').submit()"><b>Effacer category</b></button>
@@ -93,10 +92,18 @@
                                 <pre class="w3-tiny w3-text-blue-gray w3-white w3-border" onclick="modal({{ $task }}, '{{ $category->titre }}')">{{ substr($task->description, 0 , 40) }} ...</pre>
                             </div>
 
-                            <div class="tags w3-container w3-border-top w3-padding">
-                                <i class="fa fa-tags"></i>
-                                <span class="w3-tag w3-orange">js</span>
-                                <span class="w3-tag w3-blue-gray">php</span>
+                            <div class="tags w3-container w3-border-top w3-padding" >
+                                <div id="tag" onclick="toggle('addTaskTag-{{ $task->id }}')">
+                                    <i class="fa fa-tags"></i>
+                                    @foreach($task->tags as $tag)
+                                        <span class="w3-tag w3-orange">{{ $tag->titre }}</span>
+                                    @endforeach
+                                </div>
+                                <form action="{{ route('tags.store') }}" method="POST" id="addTaskTag-{{ $task->id }}" style="display: none;">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="task_id" value="{{ $task->id }}">
+                                    <input type="text" class="w3-input w3-border" placeholder="Ex: php" name="titre" value="" onblur="document.getElementById('addTaskTag-{{ $task->id }}').submit()">
+                                </form>
                             </div>
                         </div>
                     @endforeach
@@ -203,26 +210,6 @@
                                 <button class="w3-button w3-green w3-margin" type="submit">Envoyer</button>
                             </form>
                         </div>
-                    </div>
-
-                    <div class="setting w3-col m3 w3-card w3-blue-gray w3-container w3-center">
-                        <header>
-                            <h5>Label</h5>
-                        </header>
-                        
-                        <div class="labels w3-margin-bottom">
-                            <button class="w3-button w3-amber"> js</button>
-                            <button class="w3-button w3-purple"> php</button>
-                        </div>
-                        <form action="" class="labels w3-margin-bottom">
-                            {{ method_field('PUT') }}
-                            {{ csrf_field() }}
-                            <input type="text" name="tagName" class="w3-input w3-border w3-margin-bottom">
-                            <button class="w3-button w3-green" type="submit">
-                                Ajouter
-                            </button>
-                        </form>
-
                     </div>
                 </div>
             </div>
