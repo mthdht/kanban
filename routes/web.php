@@ -19,4 +19,5 @@ Route::resources([
     '/projects' => 'ProjectController',
     '/categories' => 'CategoryController',
     '/tasks' => 'TaskController',
+    '/tags' => 'TagController',
 ]);
