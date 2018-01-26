@@ -4,18 +4,30 @@
     <div class=" w3-row-padding">
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px">
-            <h5 id="projectTitre" onclick="toggle('projectTitreInput');document.getElementById('projectTitre').style.display = 'none';document.getElementById('projectTitreInput').focus()">
-                <b>
+            <h5>
+                <b id="projectTitre" onclick="toggle('projectTitreInput');document.getElementById('projectTitre').style.display = 'none';document.getElementById('projectTitreInput').focus()">
                     <i class="fa fa-folder"></i> {{ $project->titre }}
-                    <span class="w3-right"> Date-line: {{ $project->dateLine }}</span>
                 </b>
+
+                <b id="projetDateLine" class="w3-right" onclick="toggle('projectDateLineInput');document.getElementById('projectDateLine').style.display = 'none';document.getElementById('projectDateLineInput').focus()">
+                    <span> Date-line: <span>{{ $project->dateLine }}</span></span>
+                </b>
+                <form action="{{ route('projects.update', ['project' => $project]) }}" id="projectTitreForm" method="POST" style="width: 90%;">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
+                    <input type="text" name="titre" value="{{ $project->titre }}" class="w3-input w3-border" id="projectTitreInput" style="display: none;"
+                           onblur="document.getElementById('projectTitreForm').submit()">
+                </form>
+
+                <form action="{{ route('projects.update', ['project' => $project]) }}" id="projectDateLineForm" method="POST" class="w3-right">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
+                    <input type="hidden" name="titre" value="{{ $project->titre }}">
+                    <input type="date" name="dateLine" value="{{ $project->dateLine }}" class="w3-input w3-border" id="projectDateLineInput" style="display: none;"
+                           onblur="document.getElementById('projectDateLineForm').submit()">
+                </form>
             </h5>
-            <form action="{{ route('projects.update', ['project' => $project]) }}" id="projectTitreForm" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('PUT') }}
-                <input type="text" name="titre" value="{{ $project->titre }}" class="w3-input w3-border" id="projectTitreInput" style="display: none;"
-                       onblur="document.getElementById('projectTitreForm').submit()">
-            </form>
+
         </header>
     </div>
 
