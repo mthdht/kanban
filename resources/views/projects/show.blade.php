@@ -4,7 +4,18 @@
     <div class=" w3-row-padding">
         <!-- Header -->
         <header class="w3-container" style="padding-top:22px">
-            <h5><b><i class="fa fa-folder"></i> {{ $project->titre }} <span class="w3-right"> Date-line: {{ $project->dateLine }}</span></b></h5>
+            <h5 id="projectTitre" onclick="toggle('projectTitreInput');document.getElementById('projectTitre').style.display = 'none';document.getElementById('projectTitreInput').focus()">
+                <b>
+                    <i class="fa fa-folder"></i> {{ $project->titre }}
+                    <span class="w3-right"> Date-line: {{ $project->dateLine }}</span>
+                </b>
+            </h5>
+            <form action="{{ route('projects.update', ['project' => $project]) }}" id="projectTitreForm" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('PUT') }}
+                <input type="text" name="titre" value="{{ $project->titre }}" class="w3-input w3-border" id="projectTitreInput" style="display: none;"
+                       onblur="document.getElementById('projectTitreForm').submit()">
+            </form>
         </header>
     </div>
 
