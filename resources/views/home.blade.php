@@ -91,7 +91,6 @@
                         <p> Tickets</p>
                     </div>
                     <div class="w3-clear"></div>
-                    <div class="tag"><i class="fa fa-tags"></i> js-php</div>
                 </div>
             </div>
         @endforeach
