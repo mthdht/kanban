@@ -26,11 +26,14 @@ edit .env for emails configuration
 
 ### Contributing
 
-You want to help ? Easy, just:
+You want to help ? See [Contributing](https://github.com/mthdht/kanban/blob/master/CONTRIBUTING.md) file or just:
 
  - Fork the repository
  - make your own branch
  - do your things :)
  - make a pull request to develop branch
 
-License
+### License
+
+the all project is under the MIT LICENCE
+See [LICENCE](https://github.com/mthdht/kanban/blob/master/LICENCE) file
